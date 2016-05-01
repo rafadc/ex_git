@@ -1,7 +1,7 @@
 defmodule ExGit.Command.Init do
   @behaviour ExGit.Command
 
-  @folders [".git/", ".git/hooks/", ".git/info/", ".git/objects/", ".git/refs/"]
+  @folders [".git/", ".git/hooks/", ".git/info/", ".git/objects/", ".git/objects/info", ".git/objects/pack", ".git/refs/"]
 
   def description do
     "init - Initialize a Git repository"

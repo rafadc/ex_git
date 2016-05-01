@@ -1,5 +1,5 @@
 defmodule ExGit.CLI do
-  @commands ["init"]
+  @commands ["init", "hash-object"]
 
   def main(args) do
     case args do
@@ -11,11 +11,11 @@ defmodule ExGit.CLI do
   end
 
   defp command_descriptions do
-    Enum.map(@commands, fn(x) -> command_description(x) end)
+    Enum.map(@commands, fn(x) -> "#{command_description(x)} \n" end)
   end
 
   defp command_module(command) do
-    Module.concat([ExGit, Command, String.capitalize(command)])
+    Module.concat([ExGit, Command, constantize(command)])
   end
 
   defp command_description(command) do
@@ -25,4 +25,12 @@ defmodule ExGit.CLI do
   defp execute(command, args) do
     command_module(command).execute(args)
   end
+
+  defp constantize(text) do
+    text
+    |> String.split("-")
+    |> Enum.map(fn(x) -> String.capitalize(x) end)
+    |> Enum.join
+  end
+
 end

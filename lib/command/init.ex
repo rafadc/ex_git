@@ -1,7 +1,7 @@
 defmodule ExGit.Command.Init do
   @behaviour ExGit.Command
 
-  @folders [".git/", ".git/hooks/", ".git/info/", ".git/objects/", ".git/objects/info", ".git/objects/pack", ".git/refs/"]
+  @folders [".exgit/", ".exgit/hooks/", ".exgit/info/", ".exgit/objects/", ".exgit/objects/info", ".exgit/objects/pack", ".exgit/refs/"]
 
   def description do
     "init - Initialize a Git repository"
@@ -15,6 +15,6 @@ defmodule ExGit.Command.Init do
 
   defp create_description_file do
     text = "Unnamed repository; edit this file 'description' to name the repository."
-    File.write(".git/description", text)
+    File.write(".exgit/description", text)
   end
 end

@@ -1,5 +1,5 @@
 defmodule ExGit.CLI do
-  @commands ["init", "hash-object"]
+  @commands ["init", "hash-object", "cat-file"]
 
   def main(args) do
     case args do

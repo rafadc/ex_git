@@ -11,7 +11,9 @@ defmodule ExGit.Command.HashObject do
     folder = String.slice(hash, 0..1)
     file = String.slice(hash, 2..-1)
     File.mkdir(".exgit/objects/#{folder}")
-    File.write(".exgit/objects/#{folder}/#{file}", content)
+    file_contents = %GitObject{type: "blob", content: content}
+                    |> Poison.encode!
+    File.write(".exgit/objects/#{folder}/#{file}", file_contents)
   end
 
   defp hash(content) do

@@ -20,6 +20,6 @@ defmodule ExGit.Mixfile do
   end
 
   defp deps do
-    []
+    [{:poison, "~> 2.0"}]
   end
 end

@@ -10,6 +10,7 @@ defmodule ExGit.Command.CatFile do
     folder = String.slice(hash, 0..1)
     file = String.slice(hash, 2..-1)
     {:ok, contents} = File.read(".exgit/objects/#{folder}/#{file}")
-    IO.puts contents
+    git_object = Poison.decode!(contents, as: %GitObject{})
+    IO.puts git_object.content
   end
 end
